@@ -4,11 +4,11 @@
 
 <main class="fsim-bkg align-content-center justify-content-center">
     <div class="container align-content-center justify-content-center text-white fsim-glass-white">
-        <div class="row">
+        <div class="row d-flex">
             <div class="d-flex col-xl-auto col-12 align-items-center justify-content-center">
                 <img class="img-fluid rounded" src="~/img/godfather.png" alt="FacteSimchin Icon" />
             </div>
-            <div class="col mt-xl-0 mt-3">
+            <div class="col mt-xl-0 mt-3 align-items-center justify-content-center">
                 <div class="container align-content-center justify-content-center">
                     <div class="row">
                         <div class="col-12">
@@ -28,7 +28,7 @@
                     </div>
                     <div class="row">
                         <div class="col-12">
-                            <button type="submit" class="btn btn-primary mt-2" style="width: 100%">شروع بازی</button>
+                            <button class="btn btn-primary mt-2" style="width: 100%">شروع بازی</button>
                         </div>
                     </div>
                 </div>
@@ -36,3 +36,13 @@
         </div>
     </div>
 </main>
+
+<footer class="fsim-main-footer text-center">
+    <div>
+        <p>
+            تمامی حقوق متعلق به <strong>مهربد ملاکاظمی</strong> است - @{
+                System.Globalization.PersianCalendar persianCalendar = new System.Globalization.PersianCalendar();
+            } @persianCalendar.GetYear(DateTime.Now).ToString("0000")
+        </p>
+    </div>
+</footer>

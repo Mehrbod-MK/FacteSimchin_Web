@@ -1,0 +1,51 @@
+@import url(font-iran-sans.css);
+
+html {
+    font-family: IRANSans;
+    font-weight: 300;
+}
+
+body {
+    margin: 0;
+    font-family: IRANSans, sans-serif, serif;
+    font-weight: 300;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
+  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+p {
+    color: white;
+}
+
+.fsim-bkg {
+    background-color: black;
+    width: 100%;
+    height: 100vh;
+}
+
+.fsim-glass-white {
+    /* Layout */
+    padding: 1rem;
+    border-radius: 16px;
+    /* Glass effect */
+    background: rgba(255, 255, 255, 0.18); /* mild white tint */
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    /* Border + shadow for depth */
+    border: 1px solid rgba(255, 255, 255, 0.35);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.18);
+}
+

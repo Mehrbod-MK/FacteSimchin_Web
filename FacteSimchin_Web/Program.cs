@@ -1,4 +1,5 @@
 using FacteSimchin_Web.Models;
+using Microsoft.AspNetCore.HttpOverrides;
 using Microsoft.EntityFrameworkCore;
 
 namespace FacteSimchin_Web
@@ -19,6 +20,12 @@ namespace FacteSimchin_Web
             builder.Services.AddControllersWithViews();
 
             var app = builder.Build();
+
+            // Handle reverse-proxies (IIS, Cloudflare, Nginx, etc.).
+            app.UseForwardedHeaders(new ForwardedHeadersOptions
+            {
+                ForwardedHeaders = ForwardedHeaders.XForwardedProto | ForwardedHeaders.XForwardedHost
+            });
 
             // Configure the HTTP request pipeline.
             if (!app.Environment.IsDevelopment())

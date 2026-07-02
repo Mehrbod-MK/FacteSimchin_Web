@@ -1,0 +1,31 @@
+﻿@model ListPlayersViewModel
+@{
+    ViewData["Title"] = "دعوت از بازیکنان";
+}
+
+<main class="fsim-bkg align-content-center justify-content-center">
+    <div class="container align-content-center justify-content-center text-white fsim-glass-white">
+        <div class="row d-flex">
+            <div class="d-flex col-xl-auto col-12 align-items-center justify-content-center">
+                <img class="img-fluid" src="@Helpers.GenerateQrCodeBase64ImgSrc($"{Context.Request.Scheme}://{Context.Request.Host}/game/player/joinsession?sessionId={Model.SessionId}")" width="200px" alt="Join game session QR code" />
+            </div>
+            <div class="col mt-xl-0 mt-3 align-items-center justify-content-center">
+                <div class="container align-content-center justify-content-center">
+                    <div class="row">
+                        
+                    </div>
+                    <div class="row">
+                        
+                    </div>
+                    <div class="row">
+                        
+                    </div>
+                    <div class="row">
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+

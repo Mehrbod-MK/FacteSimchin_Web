@@ -73,8 +73,9 @@ function godNewGame() {
     const godNameString = document.getElementById("txtGodName").value;
     apiClient.post("/api/v1/game/newgame", { godName: godNameString })
         .then(newGameInfos => {
-            
             setTextContent("btnStartNewGame", "با موفقیت وارد شدید!");
+            window.open(`/game/god/listplayers?sessionId=${newGameInfos.sessionId}&godSecret=${newGameInfos.godSecret}`, "_blank")
+                .focus();
         })
         .catch(error => {
             displayModal("خطا", error);

@@ -9,6 +9,27 @@
     <link rel="stylesheet" href="~/FacteSimchin_Web.styles.css" asp-append-version="true" />
 </head>
 <body>
+    <!-- Modal -->
+    <div class="modal fade" id="myModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 id="modalTitle" class="modal-title">@ViewData["ModalTitle"]</h5>
+                </div>
+                <div id="modalBody" class="modal-body">
+                    @(ViewData["ModalContent"] ?? "پیام سیستم")
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal">@(ViewData["ModalBtn1Text"] ?? "قبول")</button>
+                    @if ((bool?)ViewData["ModalShowBtn2"] == true)
+                    {
+                        <button type="button" class="btn btn-secondary">@(ViewData["ModalBtn2Text"] ?? "لغو")</button>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+
     @RenderBody()
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>

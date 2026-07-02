@@ -1,20 +1,20 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using FacteSimchin_Web.Models;
+using Microsoft.AspNetCore.Mvc;
 
 namespace FacteSimchin_Web.Controllers.Api.v1
 {
     [ApiController]
     [Route("api/v1/[controller]")]
-    public class GameFunctionsController : Controller
+    public class GameFunctionsController(AppDbContext db) : Controller
     {
-        [HttpPost("newgame")]
-        public IActionResult NewGame([FromBody] PlayerRequest player)
-        {
-            return Json(new { god = player.GodPlayerName });
-        }
-    }
+        private readonly AppDbContext _db = db;
 
-    public class PlayerRequest
-    {
-        public string GodPlayerName { get; set; }
+        [HttpPost("testapi")]
+        public async Task<IActionResult> TestApi()
+        {
+            await _db.GameSessions.AddAsync(new GameSessionModel() { SessionId = Guid.NewGuid().ToString(), GodName = "مهربد" });
+            await _db.SaveChangesAsync();
+            return Ok();
+        }
     }
 }

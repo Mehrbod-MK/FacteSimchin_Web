@@ -1,4 +1,8 @@
 $kind: http-request
+name: NewGame
 url: ""
-method: GET
+method: POST
+body:
+  type: json
+  content: "{ }"
 order: 1781860698622

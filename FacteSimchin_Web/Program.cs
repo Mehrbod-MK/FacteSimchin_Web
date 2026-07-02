@@ -1,3 +1,6 @@
+using FacteSimchin_Web.Models;
+using Microsoft.EntityFrameworkCore;
+
 namespace FacteSimchin_Web
 {
     public class Program
@@ -5,6 +8,12 @@ namespace FacteSimchin_Web
         public static void Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
+
+            // Add EF Core ORM dependency injection.
+            builder.Services.AddDbContext<AppDbContext>(options =>
+                options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+
+            
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();

@@ -83,4 +83,4 @@ function godNewGame() {
             setTextContent("btnStartNewGame", "شروع بازی");
         });
 };
-/***************** NEW GAME *****************/
+/********************************************/

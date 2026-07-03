@@ -1,21 +1,41 @@
 ﻿@model ListPlayersViewModel
 @{
     ViewData["Title"] = "دعوت از بازیکنان";
+    string joinLink = $"{Context.Request.Scheme}://{Context.Request.Host}/game/player/joinsession?sessionId={Model.SessionId}";
 }
 
 <main class="fsim-bkg align-content-center justify-content-center">
     <div class="container align-content-center justify-content-center text-white fsim-glass-white">
         <div class="row d-flex">
             <div class="d-flex col-xl-auto col-12 align-items-center justify-content-center">
-                <img class="img-fluid" src="@Helpers.GenerateQrCodeBase64ImgSrc($"{Context.Request.Scheme}://{Context.Request.Host}/game/player/joinsession?sessionId={Model.SessionId}")" width="200px" alt="Join game session QR code" />
+                <img class="img-fluid" src="@Helpers.GenerateQrCodeBase64ImgSrc(joinLink)" width="200px" alt="Join game session QR code" />
             </div>
             <div class="col mt-xl-0 mt-3 align-items-center justify-content-center">
                 <div class="container align-content-center justify-content-center">
                     <div class="row">
-                        
+                        <div class="col-12">
+                            <h6>بازیکنان جهت پیوستن به بازی شما، می‌توانند رمزینه مقابل را اسکن کنند، یا از <a href="@joinLink"> این لینک</a> جهت ورود به بازی استفاده کنند.</h6>
+                        </div>
                     </div>
-                    <div class="row">
-                        
+                    <div class="row mx-auto overflow-auto" style="max-height: 400px">
+                        <table class="table table-striped table-bordered align-middle shadow-lg text-white">
+                            <thead>
+                                <tr>
+                                    <th scope="col">#</th>
+                                    <th scope="col">Name</th>
+                                    <th scope="col">Role</th>
+                                    <th scope="col">Status</th>
+                                </tr>
+                            </thead>
+                            <tbody id="tableListPlayers" class="text-white">
+                                <tr>
+                                    <th class="text-white" scope="row">1</th>
+                                    <td class="text-white">Anna Keller</td>
+                                    <td class="text-white">Designer</td>
+                                    <td><span class="badge bg-success">Active</span></td>
+                                </tr>
+                            </tbody>
+                        </table>
                     </div>
                     <div class="row">
                         

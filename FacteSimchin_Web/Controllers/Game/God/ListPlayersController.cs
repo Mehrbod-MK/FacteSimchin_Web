@@ -15,7 +15,7 @@ namespace FacteSimchin_Web.Controllers.Game.God
                 .AsNoTracking()
                 .AnyAsync(g => g.SessionId == sessionId && g.Secret == godSecret))
                 return NotFound($"بازی با شناسه {sessionId} یافت نشد یا شما اجازه دسترسی ندارید چون راوی بازی نیستید.");
-            return View(new ListPlayersViewModel() { SessionId = sessionId, });
+            return View(new ListPlayersViewModel() { SessionId = sessionId, GodSecret = godSecret });
         }
     }
 }

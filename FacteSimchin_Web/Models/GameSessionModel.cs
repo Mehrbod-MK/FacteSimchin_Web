@@ -12,5 +12,7 @@ namespace FacteSimchin_Web.Models
         public required string Secret { get; set; }
 
         public List<PlayerModel> Players { get; set; } = [];
+
+        public required bool AcceptsNewPlayers { get; init; }
     }
 }

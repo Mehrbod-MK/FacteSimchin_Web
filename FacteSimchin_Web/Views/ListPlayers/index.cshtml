@@ -14,7 +14,7 @@
                 <div class="container align-content-center justify-content-center">
                     <div class="row">
                         <div class="col-12">
-                            <h6>بازیکنان جهت پیوستن به بازی شما، می‌توانند رمزینه مقابل را اسکن کنند، یا از <a href="@joinLink"> این لینک</a> جهت ورود به بازی استفاده کنند.</h6>
+                            <h6>بازیکنان جهت پیوستن به بازی شما، می‌توانند رمزینه مقابل را اسکن کنند، یا از <a href="@joinLink" target="_blank"> این لینک</a> جهت ورود به بازی استفاده کنند.</h6>
                         </div>
                     </div>
                     <div class="row mx-auto overflow-auto" style="max-height: 400px">
@@ -22,26 +22,34 @@
                             <thead>
                                 <tr>
                                     <th scope="col">#</th>
-                                    <th scope="col">Name</th>
-                                    <th scope="col">Role</th>
-                                    <th scope="col">Status</th>
+                                    <th scope="col">نام</th>
+                                    <th scope="col">عملیات</th>
                                 </tr>
                             </thead>
-                            <tbody id="tableListPlayers" class="text-white">
-                                <tr>
-                                    <th class="text-white" scope="row">1</th>
-                                    <td class="text-white">Anna Keller</td>
-                                    <td class="text-white">Designer</td>
-                                    <td><span class="badge bg-success">Active</span></td>
-                                </tr>
+                            <tbody id="tableListPlayersNames" class="text-white">
+                                <!--tr>
+                                    <th class="text-white" scope="row">SAMPLE ROW</th>
+                                    <td class="text-white">Mehrbod MK</td>
+                                    <td><button class="btn btn-danger">اخراج</button></td>
+                                </tr-->
                             </tbody>
                         </table>
                     </div>
-                    <div class="row">
-                        
+                    <div class="row container align-items-start justify-content-start m-0 p-0">
+                        <div class="row">
+                            <div class="col-12">
+                                <h6 id="lblNumPlayers" class="mb-3">تعداد بازیکنان:  0</h6>
+                            </div>
+                        </div>
+                        <div class="row m-0 p-0">
+                            <div class="col-12 m-0 p-0">
+                                <button id="btnRefreshPlayersNamesList" class="btn btn-info" onclick="displayPlayersNamesTable('@Model.SessionId', '@Model.GodSecret')">تازه‌سازی لیست</button>
+                                <button class="btn btn-danger">بستن جلسه بازی</button>
+                            </div>
+                        </div>
                     </div>
                     <div class="row">
-                        
+                        <button class="btn btn-primary mt-2">انتخاب نقش‌ها</button>
                     </div>
                 </div>
             </div>

@@ -48,7 +48,8 @@ async function api(
         throw new Error(`HTTP ${response.status}\n${errorText}`);
     }
 
-    return response.json();
+    const raw = await response.text();
+    return raw ? JSON.parse(raw) : null;
 }
 
 const apiClient = {
@@ -84,3 +85,51 @@ function godNewGame() {
         });
 };
 /********************************************/
+
+/***************** GOD SCRIPTS *****************/
+function displayPlayersNamesTable(sessionId, godSecret) {
+    let btnRefreshPlayersNamesList = "btnRefreshPlayersNamesList";
+    setElementActive(btnRefreshPlayersNamesList, false);
+    setTextContent(btnRefreshPlayersNamesList, "در حال بارگیری...");
+    apiClient.post("/api/v1/game/get_list_joined_player_names", { SessionId: sessionId, GodSecret: godSecret })
+        .then(joinedPlayers => {
+            let tableListPlayersNames = document.getElementById("tableListPlayersNames");
+            tableListPlayersNames.innerHTML = "";
+            let lblNumPlayers = document.getElementById("lblNumPlayers");
+            lblNumPlayers.innerHTML = `تعداد بازیکنان:  ${joinedPlayers.players.length}`;
+            joinedPlayers.players.forEach(player => {
+                tableListPlayersNames.innerHTML += `
+                <tr>
+                    <th class="text-white" scope="row">${player.id}</th>
+                    <td class="text-white">${player.name}</td>
+                    <td><button class="btn btn-danger">اخراج</button></td>
+                </tr>`;
+            });
+            setElementActive(btnRefreshPlayersNamesList, true);
+            setTextContent(btnRefreshPlayersNamesList, "تازه‌سازی لیست");
+        })
+        .catch(error => {
+            displayModal("خطا", error);
+            setElementActive(btnRefreshPlayersNamesList, true);
+            setTextContent(btnRefreshPlayersNamesList, "تازه‌سازی لیست");
+        })
+}
+/***********************************************/
+
+/***************** PLAYER SCRIPTS *****************/
+function joinGame(sessionId) {
+    let btnJoinGame = "btnJoinGame";
+    setElementActive(btnJoinGame, false);
+    setTextContent(btnJoinGame, "لطفاً کمی صبر کنید...");
+    const playerName = document.getElementById("txtPlayerName").value;
+    apiClient.post("/api/v1/game/join_game_session", { SessionId: sessionId, PlayerName: playerName })
+        .then(playerJoinedInfos => {
+            setTextContent(btnJoinGame, "با موفقیت وارد بازی شدید!");
+        })
+        .catch(error => {
+            displayModal("خطا", error);
+            setElementActive(btnJoinGame, true);
+            setTextContent(btnJoinGame, "پیوستن به بازی");
+        })
+}
+/**************************************************/

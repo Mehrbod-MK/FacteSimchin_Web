@@ -12,6 +12,9 @@ body {
     unicode-bidi: bidi-override;
     font-feature-settings: "ss02";
     perspective: 1000px;
+    background-color: black;
+    background-image: url(../img/bkgMafiaWallpaperPattern.jpg);
+    background-repeat: repeat;
 }
 
 @media (min-width: 768px) {
@@ -34,9 +37,6 @@ p {
 }
 
 .fsim-bkg {
-    background-color: black;
-    background-image: url(../img/bkgMafiaWallpaperPattern.jpg);
-    background-repeat: repeat;
     width: 100%;
     height: 100vh;
 }

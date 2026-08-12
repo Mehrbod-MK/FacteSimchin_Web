@@ -133,3 +133,59 @@ function joinGame(sessionId) {
         })
 }
 /**************************************************/
+
+/***************** CHOOSE ROLES SCRIPTS  *****************/
+const chosenRoles = new Map();
+function incrementOrDecrementRoleCount(roleId, isInc) {
+    let roleCount = 0;
+    if (chosenRoles.has(roleId)) {
+        if (isInc) {
+            roleCount = chosenRoles.get(roleId) + 1;
+        }
+        else {
+            roleCount = chosenRoles.get(roleId) - 1;
+            if (roleCount < 0) {
+                roleCount = 0;
+            }
+        }
+        if (roleCount == 0) {
+            chosenRoles.delete(roleId);
+        }
+        else {
+            chosenRoles.set(roleId, roleCount);
+        }
+    }
+    else if(isInc) {
+        roleCount = 1;
+        chosenRoles.set(roleId, roleCount)
+    }
+    setTextContent(`lblCount${roleId}`, roleCount.toString());
+}
+function chooseOrUnchooseRole(roleId, className) {
+    let isChosen = false;
+    if (chosenRoles.has(roleId)) {
+        isChosen = false;
+        chosenRoles.delete(roleId);
+    }
+    else {
+        isChosen = true;
+        chosenRoles.set(roleId, 1);
+    }
+    let cardObject = document.getElementById(`card_${roleId}`);
+    let roleTitleObject = document.getElementById(`roleName_${roleId}`);
+    let textClass = 'text-white';
+    if (className === 'warning') {
+        textClass = 'text-black';
+    }
+    if (isChosen) {
+        cardObject.classList.add(`bg-${className}`);
+        roleTitleObject.classList.add(textClass);
+        setTextContent(`btnChooseRole_${roleId}`, "لغو انتخاب");
+    }
+    else {
+        cardObject.classList.remove(`bg-${className}`);
+        roleTitleObject.classList.remove(textClass);
+        setTextContent(`btnChooseRole_${roleId}`, "انتخاب");
+    }
+}
+/*********************************************************/
